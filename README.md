@@ -17,19 +17,30 @@ STEP 6: Print the result.
 STEP 7 : Stop.
 ### Program:
 ```
-l = []
-n = int(input())
-for i in range(n):
-       x = int(input())
-       if x%2!=0:
-            l.append(x)
- print(l)
-for i in range(2):
-      l.pop()
-     print(l)
+reg no:212223070023
+name:saran krishna P S
+stack = []
+n = int(input("Enter the number of elements: "))
+
+for _ in range(n):
+    val = int(input())
+    if val % 2 != 0:
+        stack.append(val)
+
+print("Stack after pushing odd numbers:", stack)
+
+if len(stack) >= 2:
+    stack.pop()
+    stack.pop()
+elif len(stack) == 1:
+    stack.pop()
+
+print("Stack after popping last 2 elements:", stack)
+
 ```
 ### Output:
- ![image](https://github.com/user-attachments/assets/d2ce0434-7594-41af-ba20-3d7ecf9e0d93)
+![image](https://github.com/user-attachments/assets/dd8866bf-2d68-4da9-b7b6-c4d2f1b0730c)
+
 
 ### Result: Thus, the given program is implemented and executed successfully .
  
@@ -55,18 +66,30 @@ STEP 7 : Print the result.
 
 STEP 8 : Stop.
 ### Program: 
+
 ```
-import collections
-def fun(n):
-   stack = collections.deque([])
-   a=int(input())
-   for i in range (a):
-         x=stack.append(int(input()))
-     print(f"Stack before rotation {stack}") stack.rotate(n)
-print(f"Stack after rotation {stack}")
+reg no:212223070023
+name:saran krishna P S
+from collections import deque
+
+stack = deque()
+
+n = int(input("Enter number of elements to push into the stack: "))
+for _ in range(n):
+    val = input("Enter value: ")
+    stack.append(val)
+
+print("Original Stack:", list(stack))
+
+k = int(input("Enter rotation value (positive = right, negative = left): "))
+stack.rotate(k)
+
+print("Stack after rotation:", list(stack))
+
 ```
 ### Output:
-![image](https://github.com/user-attachments/assets/f42c4ec6-578c-418a-8f66-cf70abe7dc54)
+
+![image](https://github.com/user-attachments/assets/e6fcaef4-4b5c-45b5-a015-b6bcdb9aeb99)
 
 ### Result: Thus, the given program is implemented and executed successfully .
  
@@ -91,18 +114,50 @@ STEP 6: Append the even and unique elements in the stack.
 STEP 7: Print the result.
 ### Program:
 ```
-import collections
-stack = collections.deque([])
-n = int(input())
-for i in range(n):
-       x = int(input())
-        if x not in stack:
-          if x%2==0:
-             stack.appendleft(x)
-print(stack)
+reg no:212223070023
+name:saran krishna P S
+from collections import deque
+
+class Stack:
+    def __init__(self):
+        self.stack = deque()
+
+    def push(self, value):
+        self.stack.append(value)
+
+    def pop(self):
+        if self.is_empty():
+            return None
+        return self.stack.pop()
+
+    def rotate(self, k):
+        self.stack.rotate(k)
+
+    def display(self):
+        print("Stack (top on right):", list(self.stack))
+
+    def is_empty(self):
+        return len(self.stack) == 0
+
+# Example usage
+s = Stack()
+n = int(input("Enter number of elements to push into the stack: "))
+for _ in range(n):
+    val = input("Enter value: ")
+    s.push(val)
+
+s.display()
+
+k = int(input("Enter rotation value (positive = right, negative = left): "))
+s.rotate(k)
+
+print("After rotation:")
+s.display()
+
 ```
 ### Output:
-![image](https://github.com/user-attachments/assets/de6e3e09-b10b-42d4-9faf-32fcf990f29a)
+![image](https://github.com/user-attachments/assets/f36727ec-a380-4373-885f-9aee0e398f09)
+
  
 ### Result: Thus, the given program is implemented and executed successfully .
 
@@ -126,16 +181,33 @@ STEP 6 : Print the result.
 STEP 7 : Stop.
 ### Program:
 ```
-from multiprocessing import Queue
-queue = Queue()
-for i in range(4):
-    queue.put(int(input()))
-for i in range(4):
-     print(queue.get())
+reg no:212223070023
+name:saran krishna P S
+from multiprocessing import Process
+
+def display_value(val):
+    print(f"Value: {val}")
+
+if __name__ == "__main__":
+    values = []
+    print("Enter 4 integer values:")
+    for i in range(4):
+        num = int(input(f"Value {i+1}: "))
+        values.append(num)
+
+    processes = []
+    for val in values:
+        p = Process(target=display_value, args=(val,))
+        processes.append(p)
+        p.start()
+
+    for p in processes:
+        p.join()
+
 ```
 ### Output:
- ![image](https://github.com/user-attachments/assets/26a380ff-118e-43f4-8178-83a5417262b5)
- 
+ ![image](https://github.com/user-attachments/assets/f698ccce-41a4-4d3b-bb21-59ac020aae89)
+
 
 ### Result: Thus, the given program is implemented and executed successfully .
  
